@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "UMD",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "inlineSourceMap": true,
+    "outDir": "dist"
+  },
+  "files": ["globals.d.ts"],
+  "include": ["src/**/*"]
+}
