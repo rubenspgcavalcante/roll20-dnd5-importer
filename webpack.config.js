@@ -2,7 +2,10 @@ const path = require("path");
 
 module.exports = {
   entry: "./src/index.ts",
-  output: "./dist/roll20-dnd5-importer.js",
+  output: {
+    filename: "roll20-dnd5-importer.js",
+    path: path.resolve(__dirname, "dist"),
+  },
   mode: process.env.NODE_ENV ?? "production",
   devtool: "inline-source-map",
   module: {
@@ -16,9 +19,5 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-  },
-  output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
   },
 };
