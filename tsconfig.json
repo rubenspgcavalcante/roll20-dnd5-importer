@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "module": "UMD",
+    "outDir": "./dist/",
     "noImplicitAny": true,
-    "removeComments": true,
-    "preserveConstEnums": true,
-    "inlineSourceMap": true,
-    "outDir": "dist"
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "sourceMap": true
   },
   "files": ["globals.d.ts"],
   "include": ["src/**/*"]
