@@ -1,4 +1,4 @@
-type Roll20EventName = "ready" | "chat:message";
+type Roll20EventName = 'ready' | 'chat:message';
 
 type Roll20OnEventWatcherType<
   EventName extends Roll20EventName,
@@ -12,14 +12,14 @@ type Roll20OnEventWatcherType<
 type GeneralMessage = {
   content: string;
   playerid: string;
-  type: "general";
+  type: 'general';
   who: string;
 };
 
 type APIMessage = {
   content: string;
   playerid: string;
-  type: "api";
+  type: 'api';
   who: string;
 };
 
@@ -30,15 +30,17 @@ type RollMessage = {
   signature: string;
   tdseed: number;
   timestamp: number;
-  type: "rollresult";
+  type: 'rollresult';
   who: string;
 };
 
 type Message = GeneralMessage | RollMessage | APIMessage;
 
-type Roll20OnEventWatcher = Roll20OnEventWatcherType<"ready", []> &
-  Roll20OnEventWatcherType<"chat:message", [Message]>;
+type Roll20OnEventWatcher = Roll20OnEventWatcherType<'ready', []> &
+  Roll20OnEventWatcherType<'chat:message', [Message]>;
 
 declare const on: Roll20OnEventWatcher;
 
 declare const log: (...entries: (string | Record<string, unknown>)[]) => void;
+
+declare const sendChat: (...entries: string[]) => void;

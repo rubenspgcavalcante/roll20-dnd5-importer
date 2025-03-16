@@ -11,5 +11,5 @@ on('chat:message', (msg) => {
   }
 
   const options = parseOptions(msg.content as APIMessageCall);
-  logger('info', options);
+  logger('chat', 'parsing JSON:', options.json);
 });

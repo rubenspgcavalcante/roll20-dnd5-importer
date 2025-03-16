@@ -1,6 +1,6 @@
-type LogLevel = 'log' | 'info' | 'warn' | 'error';
+type LogType = 'chat' | 'log' | 'info' | 'warn' | 'error';
 
-export const logger = (level: LogLevel, ...args: Parameters<typeof log>) => {
+export const logger = (type: LogType, ...args: Parameters<typeof log>) => {
   const stringfy = (val: any) => {
     // Errors
     if (val?.message) {
@@ -21,7 +21,13 @@ export const logger = (level: LogLevel, ...args: Parameters<typeof log>) => {
     return val;
   };
 
-  log(
-    `[dnd5-importer][${level.toUpperCase()}]:${args.reduce((prev, curr) => `${prev} ${stringfy(curr)}`, '')}`
-  );
+  const tag = `[dnd5-importer]`;
+  const message = `${args.reduce((prev, curr) => `${prev} ${stringfy(curr)}`, '')}`;
+
+  if (type === 'chat') {
+    sendChat(tag, message);
+    return;
+  }
+
+  log(`${tag}[${type.toUpperCase()}]:${message}`);
 };
