@@ -16,6 +16,13 @@ type GeneralMessage = {
   who: string;
 };
 
+type APIMessage = {
+  content: string;
+  playerid: string;
+  type: "api";
+  who: string;
+};
+
 type RollMessage = {
   content: string;
   origRoll: `${number}d${number}`;
@@ -27,7 +34,7 @@ type RollMessage = {
   who: string;
 };
 
-type Message = GeneralMessage | RollMessage;
+type Message = GeneralMessage | RollMessage | APIMessage;
 
 type Roll20OnEventWatcher = Roll20OnEventWatcherType<"ready", []> &
   Roll20OnEventWatcherType<"chat:message", [Message]>;

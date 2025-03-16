@@ -7,10 +7,10 @@
  * }
  */
 export type RollMessageJSONContent = {
-  type: "V" | string;
+  type: 'V' | string;
   rolls: [
     {
-      type: "R" | string;
+      type: 'R' | string;
       dice: number;
       sides: number;
       mods: {};
@@ -18,6 +18,6 @@ export type RollMessageJSONContent = {
       results: { v: number }[];
     },
   ];
-  resultType: "sum" | string;
+  resultType: 'sum' | string;
   total: number;
 };

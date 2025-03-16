@@ -1,14 +1,15 @@
-import { RollMessageJSONContent } from "./types";
+import { logger } from './helpers/logger';
+import { APIMessageCall, parseOptions } from './helpers/parseOptions';
 
-on("ready", () => {
-  log("Hello Roll20");
+on('ready', () => {
+  log('Hello Roll20');
 });
 
-on("chat:message", (msg) => {
-  if (msg.type === "rollresult") {
-    const contentRoll: RollMessageJSONContent = JSON.parse(msg.content);
-    log(`The roll of a ${msg.origRoll} was: ${contentRoll.total}`);
+on('chat:message', (msg) => {
+  if (msg.type !== 'api') {
+    return;
   }
 
-  log(`General message: ${msg.content}`);
+  const options = parseOptions(msg.content as APIMessageCall);
+  logger('info', options);
 });

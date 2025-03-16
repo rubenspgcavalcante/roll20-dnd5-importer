@@ -848,8 +848,8 @@ export interface Option {
 }
 
 export interface DefinitionKeyNameMap {
-  "feat:1789189": string;
-  "feat:1789184": string;
+  'feat:1789189': string;
+  'feat:1789184': string;
 }
 
 export interface Actions {
