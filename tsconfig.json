@@ -19,5 +19,6 @@
     ]
   },
   "files": ["globals.d.ts", "eslint.config.mjs"],
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["dist/**/*"]
 }

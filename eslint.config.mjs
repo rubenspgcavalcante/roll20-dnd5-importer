@@ -7,7 +7,7 @@ import pluginJest from 'eslint-plugin-jest';
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    files: ['**/*.{js,mjs,cjs,ts}'],
+    files: ['src/**/*.{js,mjs,cjs,ts}'],
     rules: {
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/no-unused-vars': [
@@ -37,7 +37,7 @@ export default [
   },
   eslintConfigPrettier,
   {
-    files: ['**/*.spec.ts', '**/*.test.ts'],
+    files: ['src/**/*.spec.ts', 'src/**/*.test.ts'],
     plugins: { jest: pluginJest },
     languageOptions: {
       globals: pluginJest.environments.globals.globals,
