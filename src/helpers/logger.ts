@@ -1,23 +1,19 @@
 type LogType = 'chat' | 'log' | 'info' | 'warn' | 'error';
 
 export const logger = (type: LogType, ...args: Parameters<typeof log>) => {
-  const stringfy = (val: any) => {
-    // Errors
-    if (val?.message) {
-      return val.message;
+  const stringfy = (val: unknown) => {
+    if ((val as Error)?.message) {
+      return (val as Error).message;
     }
 
-    // Generic Records
     if (typeof val === 'object') {
       return JSON.stringify(val, null, 2);
     }
 
-    // Other primitives
     if (val?.toString) {
       return val.toString();
     }
 
-    // Last resort
     return val;
   };
 

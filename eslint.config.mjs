@@ -6,10 +6,35 @@ import pluginJest from 'eslint-plugin-jest';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  { files: ['**/*.{js,mjs,cjs,ts}'] },
+  {
+    files: ['**/*.{js,mjs,cjs,ts}'],
+    rules: {
+      '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          args: 'all',
+          argsIgnorePattern: '^_',
+          caughtErrors: 'all',
+          caughtErrorsIgnorePattern: '^_',
+          destructuredArrayIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+        },
+      ],
+    },
+  },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
-  ...tseslint.configs.strictTypeChecked,
+  ...tseslint.configs.recommended,
+  {
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
   eslintConfigPrettier,
   {
     files: ['**/*.spec.ts', '**/*.test.ts'],

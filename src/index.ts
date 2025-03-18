@@ -1,5 +1,6 @@
 import { logger } from './helpers/logger';
-import { APIMessageCall, parseOptions } from './helpers/parseOptions';
+import type { APIMessageCall } from './helpers/parseOptions';
+import { parseOptions } from './helpers/parseOptions';
 
 on('ready', () => {
   log('Hello Roll20');
